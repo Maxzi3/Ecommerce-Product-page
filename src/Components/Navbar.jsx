@@ -1,17 +1,21 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Cart from "../assets/icon-cart.svg";
 import Avatar from "../assets/image-avatar.png";
-import Menu  from "../assets/icon-menu.svg";
-import Close  from "../assets/icon-close.svg";
+import Menu from "../assets/icon-menu.svg";
+import Close from "../assets/icon-close.svg";
+import { FaTrash } from "react-icons/fa6";
 
-const Navbar = () => {
+const Navbar = ({ cart, handleRemoveFromCart }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const ToggleMenu = () =>{
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const ToggleMenu = () => {
     setIsOpen(!isOpen);
-  }
-  const Linkclass = {
-    
-  }
+  };
+  const handleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <div>
       {/* Desktop View */}
@@ -26,9 +30,58 @@ const Navbar = () => {
             <a className="mr-5 hover:text-gray-900">Contact</a>
           </nav>
           <div className="flex gap-10 ">
-            <img src={Cart} className="w-8" alt="" />
+            <button onClick={handleCart}>
+              <img src={Cart} className="w-8" alt="" />
+            </button>
             <img src={Avatar} alt="" className="w-8" />
           </div>
+        </div>
+        {/* Cart Overlay */}
+        <div
+          className={` bg-white md:w-72 w-11/12 h-auto rounded-md  shadow-md p-4 absolute top-24 md:right-16 right-4 md:top-20  ${
+            !isCartOpen ? "hidden" : "flex flex-col"
+          }`}
+        >
+          <h1 className="text-xl border-b-2 pb-4">Cart</h1>
+          {cart.length === 0 ? (
+            <p className="p-10">Your cart is empty.</p>
+          ) : (
+            <ul>
+              {cart.map((item) => (
+                <li key={item.name} className="flex justify-between my-6 md:my-2">
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-10 h-10"
+                    />
+                    <div>
+                      <p className="text-sm">{item.name}</p>
+                      <div className="flex gap-2 items-center">
+                        <p className="text-sm">
+                          ${item.price.toFixed(2)} x {item.amount}
+                        </p>
+                        <p className="font-bold ">
+                          ${(item.price * item.amount).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => handleRemoveFromCart(item.name)}
+                    className="text-red-500"
+                  >
+                    <FaTrash className=" text-sm" />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {cart.length > 0 && (
+            <button className="bg-orange-600 text-white py-2 mt-4 w-full">
+              Checkout
+            </button>
+          )}
         </div>
       </header>
       {/* Mobile View */}
@@ -43,7 +96,9 @@ const Navbar = () => {
           </button>
           <a className="mr-16 font-bold text-2xl">Sneakers</a>
           <div className="flex gap-4">
-            <img src={Cart} className="w-8" alt="" />
+            <button onClick={handleCart}>
+              <img src={Cart} className="w-8" alt="" />
+            </button>
             <img src={Avatar} alt="" className="w-8" />
           </div>
         </div>

@@ -14,7 +14,7 @@ import { IoClose } from "react-icons/io5";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 
-const Product = () => {
+const Product = ({ handleAddToCart}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [count, setCount] = useState(0);
   const [selectedImage, setSelectedImage] = useState(Product1); // Set initial image
@@ -73,7 +73,11 @@ const Product = () => {
   const handleImageClick2 = (image) => {
     setSelectedImage2(image); // Update the selected image
   };
-
+  const product = {
+    name: " Fall Limited Edition Sneakers",
+    price: 125,
+    image: Pro1, // Add product image here
+  };
   return (
     <>
       <section className="flex md:flex-row flex-col md:gap-20 gap-5 md:py-10 mx-auto  md:w-9/12 ">
@@ -83,7 +87,7 @@ const Product = () => {
             src={selectedImage}
             alt="Product"
             onClick={showLightbox}
-            className="rounded-md w-full"
+            className="rounded-md  w-full"
           />
 
           {/* Thumbnails */}
@@ -93,7 +97,7 @@ const Product = () => {
               alt="Thumbnail 1"
               className={`w-20 rounded-md cursor-pointer ${
                 selectedImage === Product1
-                  ? "border-4 border-orange-500 opacity-75"
+                  ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
               onClick={() => handleImageClick(Product1)}
@@ -103,7 +107,7 @@ const Product = () => {
               alt="Thumbnail 2"
               className={`w-20 rounded-md cursor-pointer ${
                 selectedImage === Product2
-                  ? "border-4 border-orange-500 opacity-75"
+                  ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
               onClick={() => handleImageClick(Product2)}
@@ -113,7 +117,7 @@ const Product = () => {
               alt="Thumbnail 3"
               className={`w-20 rounded-md cursor-pointer ${
                 selectedImage === Product3
-                  ? "border-4 border-orange-500 opacity-75"
+                  ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
               onClick={() => handleImageClick(Product3)}
@@ -123,7 +127,7 @@ const Product = () => {
               alt="Thumbnail 4"
               className={`w-20 rounded-md cursor-pointer ${
                 selectedImage === Product4
-                  ? "border-4 border-orange-500 opacity-75"
+                  ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
               onClick={() => handleImageClick(Product4)}
@@ -144,12 +148,10 @@ const Product = () => {
             className="bg-white text-4xl p-2 rounded-full cursor-pointer"
           />
         </div>
-        <main className="flex flex-col w-10/12 mx-auto">
+        <main className="flex flex-col w-10/12 mx-auto ">
           <div className="flex flex-col">
             <h5 className="md:py-4 uppercase text-sm">sneaker company</h5>
-            <h1 className="text-4xl py-2 font-bold">
-              Fall Limited Edition Sneakers
-            </h1>
+            <h1 className="text-4xl py-2 font-bold">{product.name}</h1>
             <p className="text-sm py-2">
               These low-profile sneakers are your perfect casual wear companion
               Featuring a durable rubber outlet sole, they'll withstand
@@ -158,7 +160,9 @@ const Product = () => {
           </div>
           <div className="flex  flex-row md:flex-col justify-between">
             <div className="flex gap-4">
-              <p className="font-bold text-black text-xl">$125.00</p>
+              <p className="font-bold text-black text-xl">
+                $<span>{product.price}</span>.00
+              </p>
               <p className="bg-black px-2 h-6 rounded text-white">50%</p>
             </div>
             <p className="pt-2 pb-6 text-sm line-through ">$250</p>
@@ -179,7 +183,10 @@ const Product = () => {
                 className="w-3 cursor-pointer"
               />
             </div>
-            <button className="flex justify-center gap-2 bg-orange-600 py-2 md:px-2 px-10 rounded-md">
+            <button
+              onClick={() => handleAddToCart(product, count)}
+              className="flex justify-center md:gap-4 gap-2 bg-orange-600 py-2 md:mb-0 mb-10 md:px-2 px-10 rounded-md"
+            >
               <img src={Cart} alt="icon" />
               Add to cart
             </button>

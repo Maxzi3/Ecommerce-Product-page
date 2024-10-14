@@ -38,7 +38,7 @@ const Navbar = ({ cart, handleRemoveFromCart }) => {
         </div>
         {/* Cart Overlay */}
         <div
-          className={` bg-white md:w-72 w-11/12 h-auto rounded-md  shadow-md p-4 absolute top-24 md:right-16 right-4 md:top-20  ${
+          className={`bg-white md:w-72 w-11/12 h-auto rounded-md shadow-md p-4 fixed top-20 md:left-3/4 left-1/2 transform -translate-x-1/2 z-50 ${
             !isCartOpen ? "hidden" : "flex flex-col"
           }`}
         >
@@ -48,7 +48,10 @@ const Navbar = ({ cart, handleRemoveFromCart }) => {
           ) : (
             <ul>
               {cart.map((item) => (
-                <li key={item.name} className="flex justify-between my-6 md:my-2">
+                <li
+                  key={item.name}
+                  className="flex justify-between my-6 md:my-2"
+                >
                   <div className="flex items-center gap-2">
                     <img
                       src={item.image}
@@ -61,7 +64,7 @@ const Navbar = ({ cart, handleRemoveFromCart }) => {
                         <p className="text-sm">
                           ${item.price.toFixed(2)} x {item.amount}
                         </p>
-                        <p className="font-bold ">
+                        <p className="font-bold">
                           ${(item.price * item.amount).toFixed(2)}
                         </p>
                       </div>

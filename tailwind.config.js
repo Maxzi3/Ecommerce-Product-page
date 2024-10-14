@@ -5,7 +5,10 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        hero: "url('./src/assets/image-product-1.jpg')",
+        "Product1" : "url('/image-product-1.jpg')",
+        "Product2" : "url('/image-product-2.jpg')",
+        "Product3" : "url('/image-product-3.jpg')",
+        "Product4" : "url('/image-product-4.jpg')",
       },
     },
   },

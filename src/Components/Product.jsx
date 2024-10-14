@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import Product1 from "../assets/image-product-1.jpg";
-import Product2 from "../assets/image-product-2.jpg";
-import Product3 from "../assets/image-product-3.jpg";
-import Product4 from "../assets/image-product-4.jpg";
+
 import Pro1 from "../assets/image-product-1-thumbnail.jpg";
 import Pro2 from "../assets/image-product-2-thumbnail.jpg";
 import Pro3 from "../assets/image-product-3-thumbnail.jpg";
@@ -17,31 +14,31 @@ import { FaAngleRight } from "react-icons/fa6";
 const Product = ({ handleAddToCart}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [count, setCount] = useState(0);
-  const [selectedImage, setSelectedImage] = useState(Product1); // Set initial image
-  const [selectedImage2, setSelectedImage2] = useState(Product1); // Set initial image
+  const [selectedImage, setSelectedImage] = useState("/image-product-1.jpg"); // Set initial image
+  const [selectedImage2, setSelectedImage2] = useState("/image-product-1.jpg"); // Set initial image
   const [isOpen, setIsOpen] = useState(false);
   const showLightbox = () => {
     setIsOpen(true);
   };
 
   // Image array with 4 images
-  const images = [
-    "url('./src/assets/image-product-1.jpg')",
-    "url(./src/assets/image-product-2.jpg)",
-    "url(./src/assets/image-product-3.jpg)",
-    "url(./src/assets/image-product-4.jpg)",
+  const images2 = [
+    "/image-product-1.jpg",
+    "/image-product-2.jpg",
+    "/image-product-3.jpg",
+    "/image-product-4.jpg",
   ];
   // Handle "Next" button click
   const nextSlide = () => {
     setCurrentImageIndex(
-      currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1
+      currentImageIndex === images2.length - 1 ? 0 : currentImageIndex + 1
     );
   };
 
   // Handle "Previous" button click
   const prevSlide = () => {
     setCurrentImageIndex(
-      currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1
+      currentImageIndex === 0 ? images2.length - 1 : currentImageIndex - 1
     );
   };
   const increase = () => {
@@ -51,7 +48,7 @@ const Product = ({ handleAddToCart}) => {
     count > 0 ? setCount(count - 1) : "";
   };
 
-  const images2 = [Product1, Product2, Product3, Product4]; // Array of image sources
+  // const images2 = ["bg-Product1", "bg-Product2", "bg-Product3", "bg-Product4"]; // Array of image sources
 
   // Function for going to the next slide
   const nextSlide2 = () => {
@@ -96,47 +93,47 @@ const Product = ({ handleAddToCart}) => {
               src={Pro1}
               alt="Thumbnail 1"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage === Product1
+                selectedImage === "/image-product-1.jpg"
                   ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
-              onClick={() => handleImageClick(Product1)}
+              onClick={() => handleImageClick("/image-product-1.jpg")}
             />
             <img
               src={Pro2}
               alt="Thumbnail 2"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage === Product2
+                selectedImage === "/image-product-2.jpg"
                   ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
-              onClick={() => handleImageClick(Product2)}
+              onClick={() => handleImageClick("/image-product-2.jpg")}
             />
             <img
               src={Pro3}
               alt="Thumbnail 3"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage === Product3
+                selectedImage === "/image-product-3.jpg"
                   ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
-              onClick={() => handleImageClick(Product3)}
+              onClick={() => handleImageClick("/image-product-3.jpg")}
             />
             <img
               src={Pro4}
               alt="Thumbnail 4"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage === Product4
+                selectedImage === "/image-product-4.jpg"
                   ? "border-4 border-orange-500 opacity-35"
                   : ""
               }`}
-              onClick={() => handleImageClick(Product4)}
+              onClick={() => handleImageClick("/image-product-4.jpg")}
             />
           </div>
         </div>
         <div
           className=" md:hidden mt-20  w-full h-96 bg-cover flex justify-between items-center "
-          style={{ backgroundImage: images[currentImageIndex] }}
+          style={{ backgroundImage: `url(${images2[currentImageIndex]})` }}
         >
           {/* <img src={Product1} alt="" className="w-full  rounded-md" /> */}
           <FaAngleLeft
@@ -230,41 +227,41 @@ const Product = ({ handleAddToCart}) => {
               src={Pro1}
               alt="Thumbnail 1"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage2 === Product1
+                selectedImage2 === "/image-product-1.jpg"
                   ? "border-4 border-orange-500 opacity-75"
                   : ""
               }`}
-              onClick={() => handleImageClick2(Product1)}
+              onClick={() => handleImageClick2("/image-product-1.jpg")}
             />
             <img
               src={Pro2}
               alt="Thumbnail 2"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage2 === Product2
+                selectedImage2 === "/image-product-2.jpg"
                   ? "border-4 border-orange-500 opacity-75"
                   : ""
               }`}
-              onClick={() => handleImageClick2(Product2)}
+              onClick={() => handleImageClick2("/image-product-2.jpg")}
             />
             <img
               src={Pro3}
               alt="Thumbnail 3"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage2 === Product3
+                selectedImage2 === "/image-product-3.jpg"
                   ? "border-4 border-orange-500 opacity-75"
                   : ""
               }`}
-              onClick={() => handleImageClick2(Product3)}
+              onClick={() => handleImageClick2("/image-product-3.jpg")}
             />
             <img
               src={Pro4}
               alt="Thumbnail 4"
               className={`w-20 rounded-md cursor-pointer ${
-                selectedImage2 === Product4
+                selectedImage2 === "/image-product-4.jpg"
                   ? "border-4 border-orange-500 opacity-75"
                   : ""
               }`}
-              onClick={() => handleImageClick2(Product4)}
+              onClick={() => handleImageClick2("/image-product-4.jpg")}
             />
           </div>
         </div>

@@ -26,17 +26,16 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [(https://github.com/Maxzi3/Ecommerce-Product-page)]
+- Live Site URL: [(https://ecommerce-product-page-ruddy-gamma.vercel.app/)]
 
 ### Built with
 
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Styled Components](https://styled-components.com/) - For styles
+
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [(https://my-portfolio-drab-omega-75.vercel.app/)]
+- Twitter - [(https://x.com/crypto_Maxzi)]

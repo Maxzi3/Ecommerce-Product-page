@@ -188,14 +188,14 @@ const Product = ({ handleAddToCart }) => {
             </div>
             <button
               onClick={addToCartHandler}
-              className="flex justify-center md:gap-4 gap-2 bg-orange-600 py-2 md:mb-0 mb-10 md:px-2 px-10 rounded-md"
+              className="flex justify-center md:gap-4 gap-2 bg-orange-600 py-2 md:mb-0 mb-5 md:px-2 px-10 rounded-md"
             >
               <img src={Cart} alt="icon" />
               Add to cart
             </button>
           </div>
           {isAdded ? (
-            <p className="mt-2 font-bold text-green-700 ">Successfully added</p>
+            <p className="md:mt-2 font-bold text-green-700 ">Successfully added</p>
           ) : (
             ""
           )}

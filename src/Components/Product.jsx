@@ -11,12 +11,13 @@ import { IoClose } from "react-icons/io5";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 
-const Product = ({ handleAddToCart}) => {
+const Product = ({ handleAddToCart }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [count, setCount] = useState(0);
   const [selectedImage, setSelectedImage] = useState("/image-product-1.jpg"); // Set initial image
   const [selectedImage2, setSelectedImage2] = useState("/image-product-1.jpg"); // Set initial image
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdded, setisAdded] = useState(false);
   const showLightbox = () => {
     setIsOpen(true);
   };
@@ -75,6 +76,11 @@ const Product = ({ handleAddToCart}) => {
     price: 125,
     image: Pro1, // Add product image here
   };
+    const addToCartHandler = () => {
+      handleAddToCart(product, count); // Call the parent function
+      setisAdded(true); // Set 'isAdded' to true to show the message
+      setTimeout(() => setisAdded(false), 2000); // Reset after 2 seconds
+    };
   return (
     <>
       <section className="flex md:flex-row flex-col md:gap-20 gap-5 md:py-10 mx-auto  md:w-9/12 ">
@@ -133,7 +139,7 @@ const Product = ({ handleAddToCart}) => {
         </div>
         <div
           className=" md:hidden mt-20  w-full h-96 bg-cover flex justify-between items-center "
-          style={{ backgroundImage: `url(${images2[currentImageIndex]})` }}
+          style={{ backgroundImage: `url(${images2[currentImageIndex]})`, }}
         >
           {/* <img src={Product1} alt="" className="w-full  rounded-md" /> */}
           <FaAngleLeft
@@ -181,13 +187,18 @@ const Product = ({ handleAddToCart}) => {
               />
             </div>
             <button
-              onClick={() => handleAddToCart(product, count)}
+              onClick={addToCartHandler}
               className="flex justify-center md:gap-4 gap-2 bg-orange-600 py-2 md:mb-0 mb-10 md:px-2 px-10 rounded-md"
             >
               <img src={Cart} alt="icon" />
               Add to cart
             </button>
           </div>
+          {isAdded ? (
+            <p className="mt-2 font-bold text-green-700 ">Successfully added</p>
+          ) : (
+            ""
+          )}
         </main>
       </section>
       <div>

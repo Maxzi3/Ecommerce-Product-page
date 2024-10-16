@@ -31,7 +31,11 @@ const Navbar = ({ cart, handleRemoveFromCart }) => {
           </nav>
           <div className="flex gap-10 ">
             <button onClick={handleCart}>
-              <img src={Cart} className="w-8" alt="" />
+              {!isCartOpen ? (
+                <img src={Cart} className="w-8" alt="" />
+              ) : (
+                <img src={Close} alt="" className="w-7 cursor-pointer" />
+              )}
             </button>
             <img src={Avatar} alt="" className="w-8" />
           </div>
